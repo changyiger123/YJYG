@@ -1,0 +1,259 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.l {
+    float: left;
+}
+
+.r {
+    float: right;
+}
+
+.cf:after {
+    display: block;
+    content: "";
+    height: 0;
+    clear: both;
+    overflow: hidden;
+    visibility: hidden;
+}
+
+.cf {
+    *zoom: 1;
+}
+
+html {
+    font-size: 100px;
+    font-size: calc(1000vw / 75);
+}
+
+/*活动页面*/
+body {
+    width: 100%;
+    height: 100%;
+    background: url("../img/bg.png") no-repeat center fixed;
+    background-size: 100% 100%;
+    padding-bottom: 0.1rem;
+}
+
+.bg_top {
+    width: 100%;
+    height: 4.62rem;
+    background: url("../img/bg_top.jpg") no-repeat 50% 50%;
+    background-size: 100%;
+}
+
+.container {
+    width: 100%;
+    height: calc(100% - 4.62rem);
+    background: url("../img/bg_bottom.jpg") no-repeat 50% 50%;
+    background-size: 100%;
+}
+
+.login {
+    width: 92%;
+    height: 5.39rem;
+    margin: 0 auto;
+    /*margin-top:4.63rem;*/
+    background: #ffffff;
+    padding-top: 0.37rem;
+    border-radius: 0.1rem;
+}
+
+.login p {
+    width: 79.8%;
+    /*height: 0.79rem;*/
+    /*line-height: 0.79rem;*/
+    /*padding-top: 0.09rem;*/
+    background: #efeff4;
+    border: 1px solid #d6d7dc;
+    margin: 0 auto;
+    margin-bottom: 0.3rem;
+    padding-left: 5%;
+}
+
+.login p input {
+    border: 0;
+    background: none;
+    height: 0.68rem;
+    line-height: 0.68rem;
+    font-size: 0.3rem;
+    color: #76717e;
+    display: block;
+    padding: .1rem 0;
+}
+
+.login p:nth-child(2) input {
+    float: left;
+}
+
+.login p:nth-child(2) button {
+    width: 29.5%;
+    height: 0.68rem;
+    background: #ffa800;
+    border: none;
+    color: #ffffff;
+    float: left;
+    margin: .1rem 0;
+}
+
+.login p:nth-child(4) {
+    width: 84.8%;
+    height: 0.88rem;
+    line-height: 0.88rem;
+    padding-top: 0;
+    padding-left: 0;
+    background: #ffba00;
+    color: #ffffff;
+    font-size: 0.38rem;
+    text-align: center;
+    box-shadow: 3px 3px 5px #e4833b;
+}
+
+.login span {
+    display: block;
+    width: 55%;
+    text-align: center;
+    height: 0.06rem;
+    margin: 0 auto;
+    color: #76717e;
+    font-size: 0.26rem;
+}
+
+.login span a {
+    color: #ffa800;
+}
+
+.activeDescription {
+    width: 90%;
+    height: 4.52rem;
+    color: #e52de9;
+    padding-top: 0.62rem;
+    padding-left: 4%;
+    padding-right: 6%;
+    font-size: 0.3rem;
+}
+
+.fir {
+    width: 84.8%;
+    margin: 0 auto;
+    margin-bottom: 0.1rem;
+    text-align: center;
+}
+
+.fir:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.fir span {
+    display: block;
+    float: left;
+    width: 33%;
+    height: 1px;
+    background: #e52de9;
+    margin-top: 0.23rem;
+}
+
+.fir b {
+    margin: 0 0.18rem;
+    float: left;
+}
+
+.activeDescription p {
+    line-height: 0.48rem;
+}
+
+.activeDescription .remarks {
+    margin-top: 0.18rem;
+    font-weight: bolder;
+    line-height: 0.48rem;
+}
+
+/*弹出层样式*/
+/*	--------------------------------------------------
+	Reveal Modals
+	-------------------------------------------------- */
+
+.reveal-modal-bg {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background: #000;
+    background: rgba(0,0,0,.5);
+    z-index: 100;
+    display: none;
+    top: 0;
+    left: 0;
+}
+
+.reveal-modal {
+    visibility: hidden;
+    top:3.6rem;
+    left:18.6%;
+    position: absolute;
+    z-index: 101;
+}
+
+
+.reveal-modal .close-reveal-modal {
+    width:0.4rem;
+    height:0.4rem;
+    background:url(../img/gb.png) no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    top:0;
+    right:0;
+    cursor: pointer;
+}
+
+.reveal-modal .msg{
+    display:block;
+    width:4.71rem;
+    height:5.49rem;
+    /*background:url(../img/hb.png) no-repeat;*/
+    background-size: 100% 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
