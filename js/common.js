@@ -1,7 +1,7 @@
 /**
  * Created by chang on 2017/8/7.
  */
-//rem����Ӧ
+//rem自适应
 (function (doc, win) {
     var _root = doc.documentElement,
         resizeEvent = 'orientationchange' in window ? 'orientationchange' : 'resize',
@@ -21,7 +21,7 @@
     doc.addEventListener('DOMContentLoaded', resizeCallback, false);
 })(document, window);
 
-//�ֻ���������ʽ��֤
+//手机验证正则表达
 function checkPhone(){
     var phone = document.getElementById('phone').value;
     if(!(/^1[34578]\d{9}$/.test(phone))){
@@ -40,7 +40,7 @@ $('.getNum').click(function(){
 
 
 
-//�ж��Ƿ�Ϊע���û��ı䱳������ͼƬ
+//根据返回数值判断弹出图片场景
 var backgrounds = [
         "img/hb.png",
         "img/yzc.png"

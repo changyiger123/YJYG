@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
 }
-
+*:focus {outline: none;}
 .l {
     float: left;
 }
@@ -29,7 +29,7 @@ html {
     font-size: calc(1000vw / 75);
 }
 
-/*»î¶¯Ò³Ãæ*/
+/*ï¿½î¶¯Ò³ï¿½ï¿½*/
 body {
     width: 100%;
     height: 100%;
@@ -75,6 +75,7 @@ body {
 }
 
 .login p input {
+    width:65.5%;
     border: 0;
     background: none;
     height: 0.68rem;
@@ -97,6 +98,8 @@ body {
     color: #ffffff;
     float: left;
     margin: .1rem 0;
+    font-size: 0.27rem;
+    line-height: 0.68rem;
 }
 
 .login p:nth-child(4) {
@@ -173,7 +176,7 @@ body {
     line-height: 0.48rem;
 }
 
-/*µ¯³ö²ãÑùÊ½*/
+/*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½*/
 /*	--------------------------------------------------
 	Reveal Modals
 	-------------------------------------------------- */
