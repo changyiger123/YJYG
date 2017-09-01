@@ -1,0 +1,95 @@
+<#include "inc/layout.html" />
+<#macro import_css>
+    <link rel="stylesheet" href="${REQ}/assets/css/register.css"/>
+</#macro>
+<#macro import_script>
+    <script type="text/javascript" src="${REQ}/assets/js/md5.min.js" ></script>
+    <script type="text/javascript">
+        var countdown=60;
+        function settime(val) {
+            if (countdown == 0) {
+                val.removeAttribute("disabled");
+                val.value="获取验证码";
+                countdown = 60;
+            } else {
+                val.setAttribute("disabled", true);
+                val.value="重新发送(" + countdown + ")";
+                countdown--;
+            }
+            setTimeout(function() {
+                settime(val)
+            },1000)
+        }
+        var rmobile = /^1[3|4|5|8][0-9]\d{4,8}$/;
+        $("input[name='username']").blur(function(){
+            var username = $("input[name='username']").val();
+            if(rmobile.test(username)){
+
+            }else{
+                this.placeholder='不是完整的11位手机号或者正确的手机号前七位';
+                this.value=''
+            }
+
+        })
+        $('.getyzm').on('click',function(){
+            var that=this;
+            var username = $("input[name='username']").val();
+            if(username==''){
+                alert('用户名不能为空')
+            }else{
+                ajaxData('code/send.html',"username="+username+"&type=reset",function(data){
+                    console.log(data);
+                    if(data.code==0){
+                        settime(that);
+                        alert('验证码已发送到您的手机');
+                    }else{
+                        alert(data.message);
+                    }
+                })
+            }
+
+        })
+
+        $('.btn').click(function(){
+            //alert(1);
+            var username = $("input[name='username']").val();
+            var psd = $("input[name='psd']").val();
+            var yzm = $("input[name='yzm']").val();
+            if(yzm==''||username==''){
+                alert('用户名或验证码不能为空')
+            }else{
+                ajaxData('forget.html',"username="+username+"&password="+md5(psd)+"&code="+yzm,function(data){
+                    if(data.code==0){
+                        $('.registerinput').html('<h1 style="line-height: 155px">修改密码成功，页面正在跳转到登录页面......</h1>');
+                        window.setTimeout("window.location='${REQ}/'",2000);
+                        //window.location.href='${REQ}/';
+                    }else{
+                        alert(data.message);
+                    }
+                });
+            }
+
+        })
+
+
+    </script>
+</#macro>
+<@layout title="忘记密码">
+<div class="zccontent">
+    <div class="header">
+        <span><img src="${REQ}/assets/img/zc_logo.png" alt=""/></span>
+        <b>|</b>
+        <span class="logoright">找回密码</span>
+        <span class="back"><a href="logout.html">返回登录&gt;</a></span>
+    </div>
+    <div class="registerinput">
+        <p><span class="left">用户名</span><input type="text" name="username" class="left" placeholder="请输入用户名/手机号码"/></p>
+        <div class="yzm"><span class="left">验证码</span><p class="left"><input type="text" name="yzm" placeholder="请输入验证码"/><input type="button" class="getyzm" value="获取验证码"></p></div>
+        <p class="psd"><span>密码</span><input type="text" name="psd" placeholder="请重置登录密码"/></p>
+        <p class="btn"><input type="button" value="确定"/></p>
+    </div>
+    <div class="weixin">
+        <img src="${REQ}/assets/img/ewm.png" alt=""/>
+    </div>
+</div>
+</@layout>

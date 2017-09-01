@@ -1,0 +1,228 @@
+<#include "inc/layout.html" />
+<#macro import_script>
+    <script type="text/javascript" src="${REQ}/assets/js/md5.min.js" ></script>
+    <script type="text/javascript">
+
+        $("#loginBtn").on("click",function(e){
+            var username = $("input[name='username']").val();
+            var password = $("input[name='password']").val();
+            var rememberMe = $("input[name='rememberMe']").is(':checked');
+            var yzm = $("input[name='yzm']").val();
+
+            //check something
+            ajaxData("login/captcha.html","username="+username,function(result){
+                //console.log(result);
+                if(result.content){
+                    //需要验证码
+                    layui.use('layer', function(){
+                        var layer = layui.layer;
+                        layer.open({
+                            type: 1
+                            ,title: false //不显示标题栏
+                            ,closeBtn: false
+                            ,area: '350px;'
+                            ,shade: 0.5
+                            ,id: 'LAY_layuipro' //设定一个id，防止重复弹出
+                            ,btn: ['取消', '确认']
+                            ,moveType: 1 //拖拽模式，0或者1
+                            ,content:'<div class="yzm" style="width:330px;height:140px;background: #ffffff;padding-top:20px;padding-left:20px;"><p style="height:50px;font-size:17px;line-height: 50px;margin-bottom: 5px;"><span>验证码</span><input type="text" name="captcha" style="width:196px;height:46px;"/></p><h6><b style="color:#666666;font-size: 12px;margin-left: 75px;line-height: 18px;">输入下图中的字符</b></h6><p class="yzpic" style="height:55px;padding-left: 75px;"><img id="psrc" src="${REQ}/captcha.jpg" style="width:130px;height:55px;"/><span id="captcha"><a href="javascript:;">看不清，换一张</a></span></p></div>'
+                            ,success: function(layero){
+
+                                $('#captcha').click(function () {
+                                    $('#psrc').attr('src', '${REQ}/captcha.jpg?' + new Date().getTime() );
+                                });
+                                var btn = layero.find('.layui-layer-btn');
+                                btn.css('text-align', 'center');
+                                btn.find('.layui-layer-btn0').css({'background-color':'#ffffff','border-color':'#d6d7dc','color':'#333'})
+                                btn.find('.layui-layer-btn1').click(function(){
+                                    var captcha=$("input[name='captcha']").val();
+                                    if(captcha==''){
+                                        alert('验证码不可为空')
+                                    }else{
+                                        ajaxData("login.html","username="+username+"&password="+md5(password)+"&rememberMe="+rememberMe+"&captcha="+captcha,function(data){
+                                            console.log(data);
+                                            if(data.code==0){
+                                                window.location.href = "${REQ}/index.html";
+                                            }else{
+                                                window.alert(data.message);
+                                            }
+                                        });
+                                    }
+
+                                })
+                            }
+                        });
+                    });
+
+                }else{
+                    //不需要验证码
+                    ajaxData("login.html","username="+username+"&password="+md5(password)+"&rememberMe="+rememberMe,function(data){
+                        console.log(data);
+                        if(data.code==0){
+                            window.location.href = "${REQ}/index.html";
+                        }else{
+                            alert(data.message);
+                        }
+                    });
+                }
+
+            });
+        });
+    </script>
+</#macro>
+<#macro import_css>
+    <link rel="stylesheet" href="${REQ}/assets/css/layui.css"/>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        input{
+            margin:0;
+            padding:0;
+        }
+        ul,li,ol{
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+        }
+        html,body{
+            width:100%;
+            min-height:768px;
+            height:100%;
+            /*overflow-x:hidden;*/
+            overflow-y: hidden;
+        }
+        img{
+            border:0;
+        }
+        body{
+            background:url(${REQ}/assets/img/login_bg.png) no-repeat;
+            background-size: 100% 100%;
+        }
+        .content{
+            width:1000px;
+            height:90%;
+            padding-top:10%;
+            margin:0 auto;
+            position: relative;
+        }
+        .content .logo{
+            position:absolute;
+            width: 169px;
+            height:54px;
+            left:0;
+            top:31px;
+
+        }
+        .loginput{
+            width:400px;
+            height:380px;
+            padding-top:20px;
+            margin:0 auto;
+            background:rgba(255,255,255,.5);
+            border-radius: 9px;
+            position: relative;
+
+        }
+        .loginput p{
+            height:50px;
+            width:300px;
+            margin:0 auto;
+            margin-top:20px;
+        }
+        .loginput .typein{
+            height:46px;
+            width:296px;
+            color:#cccccc;
+            text-indent: 19px;
+        }
+        .loginput p:nth-child(1){
+            font-size: 22px;
+        }
+        .loginput p:nth-child(2) input:focus{
+            border: 1px solid #00a0e8;
+        }
+        .loginput p:nth-child(3) input:focus{
+            border: 1px solid #00a0e8;
+        }
+        .loginput p:nth-child(4){
+            height:12px;
+            font-size: 16px;
+            color:#666666;
+        }
+        .loginput p:nth-child(4) a{
+            color:#00a0e8;
+            float:right;
+        }
+        .loginput p:nth-child(5){
+            background:#ffa800;
+            color:#ffffff;
+            text-align: center;
+            line-height:50px;
+            cursor: pointer;
+            font-size: 22px;
+            margin-top:30px;
+            border-radius: 2px;
+        }
+        .loginput p:nth-child(6){
+            text-align: right;
+            color:#00a0e8;
+        }
+        .loginput p:nth-child(6) a{
+            color:#00a0e8;
+            font-size: 16px;
+        }
+
+        .footer{
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width:100%;
+            height:14%;
+            padding-top:2.7%;
+            background-color:rgba(0,0,0,0.6);
+            filter: Alpha(opacity=60);
+            margin:0 auto;
+            color:#ffffff;
+        }
+        .footer p{
+            line-height:27px;
+        }
+        .footer p:nth-child(1){
+            font-weight: 700;
+        }
+        .footer p span{
+            display: block;
+            width:700px;
+            margin:0 auto;
+            padding-left:300px;
+        }
+        .footer p span img{
+            display: inline-block;
+            width:17px;
+            height:17px;
+        }
+
+    </style>
+</#macro>
+<@layout>
+
+<div class="content">
+    <img class="logo" src="${REQ}/assets/img/login_logo.png" alt="易工家"/>
+    <div class="loginput">
+        <p>欢迎登录</p>
+        <p><input class="typein" name="username" type="text" placeholder="用户名/手机号码"/></p>
+        <p><input class="typein" name="password" type="password" placeholder="密码"/></p>
+        <p><span><input class="checkin" name="rememberMe" type="checkbox" checked="checked"/>下次自动登录</span><a href="forget.html">忘记密码?</a></p>
+        <p id="loginBtn" >登录</p>
+        <p><a href="register.html">立即注册</a></p>
+    </div>
+    <div class="footer">
+        <p><span><img src="${REQ}/assets/img/login_dh.png" alt=""/>&nbsp;&nbsp;全国服务电话：400-518-571</span></p>
+        <p><span>地址：中国·杭州·萧山区·金城路358号蓝爵国际大厦18楼1805室</span></p>
+        <p><span>©2009-2015 Ejegweb.com All Rights Reserved. 浙ICP备15031137号</span></p>
+    </div>
+</div>
+</@layout>

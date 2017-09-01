@@ -1,0 +1,185 @@
+*{
+    margin:0;
+    padding:0;
+}
+ul,li,ol{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+.left{
+    float: left;
+}
+.right{
+    float: right;
+}
+html,body{
+    width:100%;
+    min-height:768px;
+    height:100%;
+    /*overflow-x:hidden;*/
+    overflow-y: hidden;
+}
+img{
+    border:0;
+}
+.zccontent{
+    width:1000px;
+    height:100%;
+    margin:0 auto;
+}
+.header{
+    width:100%;
+    padding-top:30px;
+    height:69px;
+    border-bottom: 1px solid #d6d7dc;
+    color:#666666;
+    margin-bottom:60px;
+}
+.header b{
+    margin:0 15px;
+}
+.header img{
+    display: inline-block;
+    float: left;
+}
+.header .logoright{
+    display:inline-block;
+    height:54px;
+    line-height: 54px;
+}
+.header .back{
+    float: right;
+    height:17px;
+    display: block;
+    font-size: 17px;
+}
+.header .back a{
+    display: block;
+    color:#000000;
+    margin-top:19px;
+    text-decoration:underline;
+}
+.registerinput{
+    width:761px;
+    float: left;
+    padding-left:29px;
+}
+.registerinput .yzm{
+    height:50px;
+    margin-bottom:20px;
+}
+.registerinput .yzm p{
+    width:300px;
+    height:46px;
+    border:1px solid #a9a9a9;
+}
+.registerinput .yzm p input{
+    width:168px;
+    border:none;
+    float: left;
+}
+.registerinput .yzm p .getyzm{
+    float: left;
+    width:123px;
+    height:42px;
+    margin-top:1px;
+    color:#fffefe;
+    border:none;
+    background: #ffa800;
+    outline: none;
+    cursor: pointer;
+}
+.registerinput .yzm span{
+    line-height: 50px;
+    margin-right: 10px;
+    font-size: 17px;
+}
+.registerinput p{
+    height:50px;
+    margin-bottom:20px;
+}
+.registerinput p span{
+    font-size: 17px;
+    margin-right: 10px;
+    color:#262626;
+    line-height: 50px;
+}
+.registerinput p .des{
+    padding-top:4px;
+    font-size:13px;
+    color:#666666;
+    line-height:19px;
+    display:block;
+    width:270px;
+    margin-left:20px;
+}
+.registerinput p input{
+    width:291px;
+    height:46px;
+    padding-left: 9px;
+}
+.registerinput .psd span{
+    margin-right: 27px;
+}
+.registerinput .btn input{
+    background: none;
+    border: none;
+    border:0;
+    outline: none;
+    cursor: pointer;
+}
+.registerinput .btn{
+    width:300px;
+    height:50px;
+    margin-left: 61px;
+    background: #ffa800;
+
+}
+.registerinput .btn input{
+    color:#ffffff;
+}
+.registerinput .xy{
+    margin-left: 62px;
+    color:#666666;
+    font-size: 17px;
+}
+.registerinput .xy a{
+    color:#00a0e8;
+    text-decoration: underline;
+}
+
+::-webkit-input-placeholder { /* WebKit browsers */
+    ¡¡¡¡color:#cccccc;
+}
+.weixin{
+    float:left;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
